@@ -1,15 +1,28 @@
 #include <stdio.h>
 
-/*Needs some test but looks OK for now*/
+/*
+* If you need to add more news to this program you should add the file name to the all_news_id
+* and the file to the news directory and total new size exceeds 10 you should increment the MAX_NEW_COUNT
+*/
+
+/*Since paths are different on Linux and Windows systems I assigned them as macros*/
+#ifdef _WIN32
+#define NEWS_DIR "CSE102_HW5\\CSE102_HW5 2\\news\\"
+#define ALL_NEWS_ID_PATH "CSE102_HW5\\CSE102_HW5 2\\all_news_id.txt"
+#define READED_NEWS_ID_PATH "CSE102_HW5\\CSE102_HW5 2\\readed_news_id.txt"
+#else 
+#define NEWS_DIR "CSE102_HW5/CSE102_HW5 2/news/"
+#define ALL_NEWS_ID_PATH "CSE102_HW5/CSE102_HW5 2/all_news_id.txt"
+#define READED_NEWS_ID_PATH "CSE102_HW5/CSE102_HW5 2/readed_news_id.txt"
+#endif
 
 #define MAX_NEW_COUNT 10
-#define HEAD_LINE_SIZE 100
-#define PATH_SIZE 100
+#define PATH_SIZE 100   
 #define FILE_NAME_LENGTH 20
 #define FILE_ERROR_SENTINEL -1
 
 /*these macros are for calculating the key*/
-#define f(x) (float) (x * x * x) - (x * x) + 2
+#define f(x) (float) ((x * x * x) - (x * x) + 2)
 #define g(x) (float) (x * x)
 #define gof(x) (float) g(f(x))
 
@@ -62,7 +75,7 @@ void printDecryptedInfo(FILE *news[], int newCount)
         printf("%c", c);    /*print the current character*/
         if (c == '#')   /*if it key value*/
         {
-            fscanf(news[choice -1], "%c", &c);  /*get the number*/
+            fscanf(news[choice - 1], "%c", &c);  /*get the number*/
             int magicNum = (int) c - '0';       /*convert to integer*/
             secretNum += gof(magicNum);         /*then add it up to sum*/
         }
@@ -109,7 +122,7 @@ void readANew(FILE *news[], FILE *read_history, int newCount)
 {
     int choice, again;
     printf("Which news do you want to read?:");
-    scanf("%i", &choice); //You can add interval conditions here
+    scanf("%i", &choice);
 
     if (choice <= 0 || choice > newCount)
     {
@@ -125,8 +138,7 @@ void readANew(FILE *news[], FILE *read_history, int newCount)
         scanf("%i", &again);
         if (again)  /*If again print and save*/
         {
-            printNew(news[choice - 1]);
-            fprintf(read_history, "%i\n", choice);
+            printNew(news[choice - 1]); /*Not printing the read news twice*/
         }
     }
     else    /*else print and save*/
@@ -161,7 +173,7 @@ int openNewsFiles(FILE *news[], FILE *all_news_id, int newCount)
             fileName[myStrLen(fileName) - 1] = '\0';
         }
         /*First copy the directory path*/
-        myStrCpy(path, "CSE102_HW5\\CSE102_HW5 2\\news\\");
+        myStrCpy(path, NEWS_DIR);
         /*Then append the file name*/
         append(path, fileName);
         /*Then append the .txt*/
@@ -200,13 +212,17 @@ void append(char *source, char *append)
 
 void extr_and_print_headlines(FILE *news[], int newCount)
 {
-    char headLine[HEAD_LINE_SIZE];  /*Buffer for storing headline*/
     int i;
+    char c;
     for (i = 0; i < newCount; ++i)
     {
-        /*Storing the headline in headLine*/
-        fgets(headLine, sizeof(headLine)/sizeof(char), news[i]);    
-        printf("Title of %i. news: %s", i + 1, headLine);
+        /*Printing till we see a newline character*/
+        printf("Title of %i. news: ", i + 1);
+        while (fscanf(news[i], "%c", &c) != EOF && c != '\n')
+        {
+            printf("%c", c);
+        }
+        printf("\n");
     }
     printf("\n");
 }
@@ -214,8 +230,8 @@ void extr_and_print_headlines(FILE *news[], int newCount)
 void menu()
 {
     FILE *news[MAX_NEW_COUNT] = {NULL};  /*For news text*/
-    FILE *all_news_id = fopen("CSE102_HW5\\CSE102_HW5 2\\all_news_id.txt", "r"); /*to extract names of files*/
-    FILE *read_history = fopen("CSE102_HW5\\CSE102_HW5 2\\readed_news_id.txt", "a+"); /*to keep the read history*/
+    FILE *all_news_id = fopen(ALL_NEWS_ID_PATH, "r"); /*to extract names of files*/
+    FILE *read_history = fopen(READED_NEWS_ID_PATH, "a+"); /*to keep the read history*/
 
     if (read_history == NULL || all_news_id == NULL) return;
 
@@ -280,4 +296,5 @@ void menu()
 int main()
 {
     menu();
+    return 0;
 }
