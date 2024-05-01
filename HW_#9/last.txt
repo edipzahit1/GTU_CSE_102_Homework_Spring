@@ -1,0 +1,12 @@
+T T T T T T T T T T 
+        T T       T 
+T   T         T   T 
+T   T T T T   T   T 
+T   T         T T T 
+T   T   T         T 
+T   T   T T T T T T 
+T   T             T 
+T   T T T T   T   T 
+T     T   T   T T T 
+Last position of botanist: (9, 6)
+Remaining water volume: 74
