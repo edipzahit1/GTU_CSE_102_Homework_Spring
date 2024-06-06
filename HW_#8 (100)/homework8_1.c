@@ -362,8 +362,7 @@ void remove_newLines(char table[][MAX_COL][MAX_STRING_LENGTH], int peopleCount)
 int main()
 {
     FILE *input1_ptr = fopen("input1.txt", "r");
-    FILE *input2_ptr = fopen("input2.txt", "r");
-    if (input1_ptr == NULL || input2_ptr == NULL)
+    if (input1_ptr == NULL)
     {
         printf("Error opening files.\n");
         return 1;
@@ -376,7 +375,6 @@ int main()
     printTable(table, totalPeople);
 
     fclose(input1_ptr);
-    fclose(input2_ptr);
 
     menu(table, totalPeople);
 

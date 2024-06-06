@@ -1,0 +1,17 @@
+int, age, 25, 12, 556, 1, 19
+double, weight, 12.56, 664.2, 5.5
+char, blood_type, A, B, C , D, E
+float, height, 10.5, 20.25, 30.75, 40.2
+int, score, 30, 45, 120
+double, price, 9.8, 7.6
+char, blood_type, X, Y, Z
+float, value, 15.3, 25.8, 35.6, 48.9, 56.2
+int, quantity, 5, 10, 15, 20
+double, amount, 18.9, 24.7, 33.6
+char, letter, M, N, O, P
+float, temperature, 22.5, 30.8, 38.1, 42.6
+int, count, 8, 16, 32
+double, distance, 55.4, 67.9
+float, speed, 40.5, 55.2, 60.9, 75.3
+int, size, 100, 200, 300, 400
+double, balance, 500.25, 1000.50

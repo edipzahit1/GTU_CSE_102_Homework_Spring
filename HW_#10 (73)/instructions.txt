@@ -1,0 +1,30 @@
+00000001|G|ADD A B|addition operation
+00000010|T|ADDI A I|addition with number
+00000011|U|ADDM A M[B]|add from memory
+00000100|G|AND A B|and operation
+00000101|T|ANDI A I|and with number
+00000110|U|ANDM A M[B]|and from memory
+00000111|G|OR A B|or operation
+00001000|T|ORI A I|or with number
+00001001|U|ORM A M[B]|or from memory
+00001010|G|SUB A B|subtraction operation
+00001011|T|SUBI A I|subtraction with number
+00001100|U|SUBM A M[B]|subtraction from memory
+00001101|T|INC A|increment by 1
+00001110|T|DEC A|decrement by 1
+00001111|T|SHL A I|shift number to the left I times
+00010000|T|SHR A I|shift number to the rigth I times
+00010001|G|BRE A B|branch on line A if A and B equal
+00010010|G|BRN A B|branch on line A if A and B not equal
+00010011|G|J A B|jump to specific line number which is A + B
+00010100|G|NOR A B|nor operation
+00010101|U|LDA A M[B]|load from memory address
+00010110|U|STR A M[B]|store to memory address
+00010111|G|SWP A B|swap operation
+00011000|G|LESS A B|check A is less than B
+00011001|G|GRT A B|check A is greater than B
+00011010|G|PRI A|print the value of A
+00011011|T|PRII I|print the value
+00011100|U|PRIM M[A]|print from memory
+00011101|G|EXIT A|end of the program
+

@@ -1,6 +1,6 @@
-10,10 
+10,10
 1,0,100
-T,T,T,T,T,T,T,T,T,T 
+T,T,T,T,T,T,T,T,T,T
 B, , , ,T,T, , , ,T 
 T, ,T, , , , ,T, ,T 
 T, ,T,T,T,T, ,T, ,T 
