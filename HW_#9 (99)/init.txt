@@ -1,0 +1,13 @@
+11,11
+2,1,100
+T,T,T,T,T,T,T,T,T,T,T
+ , , , ,T,T, , , ,T,T
+T,B,T, , , , ,T, ,T,T
+T, ,T,T,T,T, ,T, ,T,T
+T, ,T, , , , ,T,T,T,T
+T, ,T, ,T, , , , ,T,T
+T, ,T, ,T,T,T,T,T,T,T
+T, ,T, , , , ,X, ,T,T
+T, ,T,T,T,T, ,T,X,T,T
+T, , ,T, ,T,X,T,T,T,T
+T,T,T,T,T,T,T,T,T,T,T
